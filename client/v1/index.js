@@ -85,12 +85,26 @@ const ascendingSortedProducts = sortByPrice(marketplace)
 
 // 3. Log the variable
 
-console.log("Marketplace sorted by ascending prices : ", ascendingSortedProducts);
+console.log("Products sorted by ascending prices : ", ascendingSortedProducts);
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
+
+function sortByDate(marketplace) {
+  return marketplace.sort((a, b) => {
+    const dateA = new Date(a.released);
+    const dateB = new Date(b.released);
+    return dateB - dateA;
+  });
+}
+
 // 2. Create a variable and assign it the list of products by date from recent to old
+
+const sortedByDateProducts = sortByDate(marketplace)
+
 // 3. Log the variable
+
+console.log("Products sorted by date : ", sortedByDateProducts);
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
