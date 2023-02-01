@@ -175,7 +175,20 @@ console.log(`Hast has ${brands.hast.length} products`);
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
+
+function sortHtoL(list) {
+  return list.sort((a, b) => b.price - a.price);
+}
+
+const sortedHtoLLoom = sortHtoL(brands.loom)
+const sortedHtoLPanafrica = sortHtoL(brands.panafrica)
+const sortedHtoLHast = sortHtoL(brands.hast)
+
 // 2. Log the sort
+
+console.log("Loom sorted by price (highest to lowest) : ", sortedHtoLLoom);
+console.log("Panafrica sorted by price (highest to lowest) : ", sortedHtoLPanafrica);
+console.log("Hast sorted by price (highest to lowest) : ", sortedHtoLHast);
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
