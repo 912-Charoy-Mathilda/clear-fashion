@@ -79,13 +79,13 @@ function sortByPrice(list) {
   return list.sort((a, b) => a.price - b.price);
 }
 
-console.log("Marketplace sorted by ascending prices : ", sortByPrice(marketplace));
-
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 
-
+const ascendingSortedProducts = sortByPrice(marketplace)
 
 // 3. Log the variable
+
+console.log("Marketplace sorted by ascending prices : ", ascendingSortedProducts);
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
