@@ -70,12 +70,16 @@ console.log(brandNames);
 
 // 3. Log how many brands we have
 
-console.log(brandNames.length)
+console.log(brandNames.length);
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
 
+function sortByPrice(list) {
+  return list.sort((a, b) => a.price - b.price);
+}
 
+console.log(sortByPrice(marketplace));
 
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 
