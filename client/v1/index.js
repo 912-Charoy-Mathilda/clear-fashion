@@ -508,7 +508,14 @@ let jacket = blueJacket;
 jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
+
+console.log("jacket : ", jacket);
+console.log("blueJacket : ", blueJacket);
+
 // 2. What do you notice?
+
+//We notice that there is the new attribute "favorite" in both variables even if we 
+//made the copy of blueJacket before giving the attribute.
 
 // we make a new assignment again
 blueJacket = {
@@ -525,6 +532,13 @@ blueJacket = {
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
 
+let jacket2 = Object.assign({}, blueJacket);
+
+jacket2.favorite = true;
+
+console.log("jacket2 : ", jacket2);
+console.log("blueJacket : ", blueJacket);
+
 /**
  * 🎬
  * The End: last thing to do
@@ -533,4 +547,9 @@ blueJacket = {
 
 // 🎯 LAST TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
+
+localStorage.setItem("MY_FAVORITE_BRANDS", JSON.stringify(MY_FAVORITE_BRANDS));
+
 // 2. log the localStorage
+
+console.log(localStorage);
