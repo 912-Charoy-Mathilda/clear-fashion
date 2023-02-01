@@ -192,7 +192,24 @@ console.log("Hast sorted by price (highest to lowest) : ", sortedHtoLHast);
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
+
+function sortByDateOtoR(marketplace) {
+  return marketplace.sort((a, b) => {
+    const dateA = new Date(a.released);
+    const dateB = new Date(b.released);
+    return dateA - dateB;
+  });
+}
+
+const sortedOtoRLoom = sortByDateOtoR(brands.loom)
+const sortedOtoRPanafrica = sortByDateOtoR(brands.panafrica)
+const sortedOtoRHast = sortByDateOtoR(brands.hast)
+
 // 2. Log the sort
+
+console.log("Loom prroducts sorted by date (old to recent): ", sortedOtoRLoom);
+console.log("Panafrica products sorted by date (old to recent): ", sortedOtoRPanafrica);
+console.log("Hast products sorted by date (old to recent): ", sortedOtoRHast);
 
 /**
  * 💶
