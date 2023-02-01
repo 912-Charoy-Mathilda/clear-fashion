@@ -117,7 +117,20 @@ console.log("The products between 50€ and 100€ : ", filteredPrices);
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
+
+function average(list) {
+  let total = 0;
+  for (const product of list) {
+    total += product.price;
+  }
+  return total/list.length;
+}
+
+const averagePrice = average(marketplace).toFixed(2)
+
 // 2. Log the average
+
+console.log("The average price of the marketplace is : ", averagePrice);
 
 /**
  * 🏎
