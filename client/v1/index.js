@@ -427,6 +427,25 @@ const COTELE_PARIS = [
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
 
+function newProductsOnly() {
+  const twoWeeksAgo = new Date();
+  twoWeeksAgo.setDate(twoWeeksAgo.getDate()-14);
+
+  for (let i = 0; i < COTELE_PARIS.length; i++) {
+    const product = COTELE_PARIS[i];
+    const releaseDate = new Date(product.released);
+
+    if (releaseDate >= twoWeeksAgo) {
+      console.log(false);
+      return;
+    }
+  }
+
+  console.log(true);
+}
+
+newProductsOnly();
+
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
