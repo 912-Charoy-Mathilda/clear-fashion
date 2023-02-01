@@ -152,8 +152,26 @@ console.log("The average price of the marketplace is : ", averagePrice);
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
 //
+
+const brands = {}
+
+marketplace.forEach(product => {
+  if (!brands[product.brand]) {
+    brands[product.brand] = [];
+  }
+
+  brands[product.brand].push(product);
+});
+
 // 2. Log the variable
+
+console.log("Products by brand names : ",brands);
+
 // 3. Log the number of products by brands
+
+console.log(`Loom has ${brands.loom.length} products`);
+console.log(`Panafrica has ${brands.panafrica.length} products`);
+console.log(`Hast has ${brands.hast.length} products`);
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
