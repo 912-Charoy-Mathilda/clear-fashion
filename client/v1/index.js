@@ -479,7 +479,13 @@ console.log("The product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c` is
 
 // 🎯 TODO 4: Delete a specific product
 // 1. Delete the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
+
+const uuidToDelete = "2b9a47e3-ed73-52f6-8b91-379e9c8e526c"
+const deleteProduct = COTELE_PARIS.filter(product => product.uuid !== uuidToDelete);
+
 // 2. Log the new list of product
+
+console.log("Cotele Paris without the product 'Pantalon Cargo Vert Olive' ", deleteProduct);
 
 // 🎯 TODO 5: Save the favorite product
 // We declare and assign a variable called `blueJacket`
