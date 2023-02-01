@@ -37,7 +37,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 const cheapestTshirt = "https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html"
 
 // 2. Log the variable
-console.log(cheapestTshirt);
+console.log("Cheapest t-shirt of the Faguo site : ", cheapestTshirt);
 
 /**
  * 👕
@@ -48,7 +48,7 @@ console.log(cheapestTshirt);
  * 👕
  */
 
-console.log(marketplace);
+console.log("Marketplace : ", marketplace);
 
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
@@ -57,7 +57,7 @@ const numberOfProducts = marketplace.length
 
 // 2. Log the variable
 
- console.log(numberOfProducts);
+ console.log("Number of products of the marketplace : ", numberOfProducts);
 
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
@@ -66,11 +66,11 @@ const brandNames = [...new Set(marketplace.map(product => product.brand))]
 
 // 2. Log the variable
 
-console.log(brandNames);
+console.log("Brand names of the marketplace : ", brandNames);
 
 // 3. Log how many brands we have
 
-console.log(brandNames.length);
+console.log("Number of brands in the marketplace : ", brandNames.length);
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
@@ -79,7 +79,7 @@ function sortByPrice(list) {
   return list.sort((a, b) => a.price - b.price);
 }
 
-console.log(sortByPrice(marketplace));
+console.log("Marketplace sorted by ascending prices : ", sortByPrice(marketplace));
 
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 
