@@ -62,19 +62,25 @@ const numberOfProducts = marketplace.length
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
 
-
+const brandNames = [...new Set(marketplace.map(product => product.brand))]
 
 // 2. Log the variable
 
-
+console.log(brandNames);
 
 // 3. Log how many brands we have
 
-
+console.log(brandNames.length)
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
+
+
+
 // 2. Create a variable and assign it the list of products by price from lowest to highest
+
+
+
 // 3. Log the variable
 
 // 🎯 TODO 5: Sort by date
