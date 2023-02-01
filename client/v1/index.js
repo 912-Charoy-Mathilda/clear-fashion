@@ -108,7 +108,12 @@ console.log("Products sorted by date : ", sortedByDateProducts);
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
+
+const filteredPrices = marketplace.filter(product => product.price >= 50 && product.price <= 100);
+
 // 2. Log the list
+
+console.log("The products between 50€ and 100€ : ", filteredPrices);
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
