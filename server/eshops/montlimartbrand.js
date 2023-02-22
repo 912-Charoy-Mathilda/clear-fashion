@@ -9,23 +9,23 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.productList-container .productList')
+  return $('.js-product-list .products-list row')
     .map((i, element) => {
       const name = $(element)
-        .find('.productList-title')
+        .find('.product-miniature__title')
         .text()
         .trim()
         .replace(/\s/g, ' ');
-      const material = $(element)
-      .find('.productList-image-materialInfo')
+      const color = $(element)
+      .find('.product-miniature__color')
       .text();
       const price = parseFloat(
         $(element)
-          .find('.productList-price')
+          .find('.product-miniature__pricing .price')
           .text()
       );
 
-      return {name, material, price};
+      return {name, color, price};
     })
     .get();
 };
