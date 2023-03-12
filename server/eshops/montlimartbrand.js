@@ -1,55 +1,47 @@
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
+const fs = require('fs');
 
-/**
- * Parse webpage e-shop
- * @param  {String} data - html response
- * @return {Array} products
- */
-const parse = data => {
-  const $ = cheerio.load(data);
+const scrapeProducts = async (url) => {
+  const products = [];
 
-  return $('.js-product-list .products-list row')
-    .map((i, element) => {
-      const name = $(element)
-        .find('.product-miniature__title')
-        .text()
-        .trim()
-        .replace(/\s/g, ' ');
-      const color = $(element)
-      .find('.product-miniature__color')
-      .text();
-      const price = parseFloat(
-        $(element)
-          .find('.product-miniature__pricing .price')
-          .text()
-      );
-
-      return {name, color, price};
-    })
-    .get();
-};
-
-/**
- * Scrape all the products for a given url page
- * @param  {[type]}  url
- * @return {Array|null}
- */
-module.exports.scrape = async url => {
   try {
     const response = await fetch(url);
 
     if (response.ok) {
-      const body = await response.text();
+      const html = await response.text();
+      const $ = cheerio.load(html);
 
-      return parse(body);
+      $('.product-miniature').each((i, el) => {
+        const brand = "Montlimart";
+        const name = $(el).find('.product-miniature__title').text().trim();
+        const price = parseFloat($(el).find('.price').text().replace(',', '.'));
+        const color = $(el).find('.product-miniature__color').text().trim();
+
+        products.push({ brand, name, price, color });
+      });
+    } else {
+      console.error(`Error fetching products. Status code: ${response.status}`);
     }
+  } catch (error) {
+    console.error(`Error scraping products: ${error}`);
+  }
 
-    console.error(response);
+  return products;
+};
 
-    return null;
+(async () => {
+  try {
+    const montlimart_products = await scrapeProducts('https://www.montlimart.com/99-vetements');
+    console.log(montlimart_products);
+
+    const jsonData = JSON.stringify(montlimart_products);
+
+    fs.writeFile('montlimart_products.json', jsonData, (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
   } catch (error) {
     console.error(error);
-    return null;
   }
-};
+})();
