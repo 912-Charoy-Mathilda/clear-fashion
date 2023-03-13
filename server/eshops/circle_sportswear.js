@@ -16,13 +16,14 @@ const parse = data => {
         .text()
         .trim()
         .replace(/\s/g, ' ');
-      // Vérifier si la caractéristique existe
-      const characteristicElement = $(element)
-      .find('.card__characteristic');
-      const characteristic = characteristicElement.length > 0 ? characteristicElement
-      .text()
-      .trim()
-      .replace(/\s/g, ' ') : '';
+        
+        const color = [];
+      $(element).find('.color-variant-container').each((i, variant) => {
+        const colors = $(variant).find('.color-variant').attr('data-color');
+        if (colors) {
+          color.push(colors);
+        }
+      });
 
       const price = parseFloat(
         $(element)
@@ -32,12 +33,11 @@ const parse = data => {
             .replace(/\D/g, ''));
          
     // Vérifier que les champs requis existent avant de créer l'objet produit
-    if (characteristic.length > 0) {
-        return {brand, name, characteristic, price};
+    if (name.length > 0) {
+        return {brand, name, price, color};
       } else {
         return null;
       }
-
     })
     .get()
     .filter(product => product !== null); // Exclure les produits nuls;

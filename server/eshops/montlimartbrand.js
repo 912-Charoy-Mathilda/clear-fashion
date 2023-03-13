@@ -12,11 +12,24 @@ const scrapeProducts = async (url) => {
       const html = await response.text();
       const $ = cheerio.load(html);
 
-      $('.product-miniature').each((i, el) => {
+      $('.product-miniature').each((i, element) => {
         const brand = "Montlimart";
-        const name = $(el).find('.product-miniature__title').text().trim();
-        const price = parseFloat($(el).find('.price').text().replace(',', '.'));
-        const color = $(el).find('.product-miniature__color').text().trim();
+        const name = $(element)
+        .find('.product-miniature__title')
+        .text()
+        .trim()
+        .toLowerCase()
+        .replace(/^\w/, c => c.toUpperCase());;
+        const price = parseFloat($(element)
+        .find('.price')
+        .text()
+        .replace(',', '.'));
+        const color = $(element)
+        .find('.product-miniature__color')
+        .text()
+        .trim()
+        .toLowerCase()
+        .replace(/^\w/, c => c.toUpperCase());
 
         products.push({ brand, name, price, color });
       });

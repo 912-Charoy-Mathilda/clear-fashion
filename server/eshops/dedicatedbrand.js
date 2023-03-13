@@ -16,16 +16,18 @@ const parse = data => {
           .text()
           .trim()
           .replace(/\s/g, ' ');
-        const material = $(element)
-        .find('.productList-image-materialInfo')
-        .text();
+        const title = $(element)
+          .find('.productList-title')
+          .text()
+          .trim();
+        const color = title.split(' ').pop();
         const price = parseFloat(
           $(element)
             .find('.productList-price')
             .text()
         );
   
-        return {brand, name, material, price};
+        return {brand, name, price, color};
       })
       .get();
   };
