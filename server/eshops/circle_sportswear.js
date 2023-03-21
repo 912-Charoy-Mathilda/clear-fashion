@@ -88,7 +88,7 @@ const scrapeAllDataCS = async () => {
     return scrapedData;
   }
   
-  const writeDataToFile = async () => {
+  const writeDataToFileCS = async () => {
   try {
     const cs_products = await scrapeAllDataCS();
     const csjson = JSON.stringify(cs_products);
@@ -102,6 +102,6 @@ const scrapeAllDataCS = async () => {
   }
 }
 
-writeDataToFile();
+writeDataToFileCS();
 
 

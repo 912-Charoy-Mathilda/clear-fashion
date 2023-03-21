@@ -43,7 +43,7 @@ const scrapeProducts = async (url) => {
   return products;
 };
 
-(async () => {
+const writeDataToFileMontlimart = async () => {
   try {
     const montlimart_products = await scrapeProducts('https://www.montlimart.com/99-vetements');
     console.log(montlimart_products);
@@ -57,4 +57,6 @@ const scrapeProducts = async (url) => {
   } catch (error) {
     console.error(error);
   }
-})();
+};
+
+writeDataToFileMontlimart();

@@ -92,4 +92,3 @@ const writeDataToFile = async () => {
 }
 
 writeDataToFile();
-
