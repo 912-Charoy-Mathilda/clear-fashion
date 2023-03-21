@@ -4,6 +4,8 @@ const cs_products = require('C:\\Users\\mathi\\OneDrive - De Vinci\\ESILV\\A4\\S
 const fs = require('fs');
 const { exec } = require('child_process');
 const { promisify } = require('util');
+const { MongoClient } = require('mongodb');
+
 
 //WRITTING FILE
 const execPromise = promisify(exec);
@@ -33,24 +35,39 @@ const execPromise = promisify(exec);
   }
 
   // MongoDB Collection
-const { MongoClient } = require('mongodb');
+  const MONGODB_URI = 'mongodb+srv://mathilda:azerty@cluster0.lfnildu.mongodb.net/test/?retryWrites=true&w=majority';
+  const MONGODB_DB_NAME = 'clearfashion';
 
-const MONGODB_URI = 'mongodb+srv://mathilda:azerty@cluster0.lfnildu.mongodb.net/test/?retryWrites=true&w=majority';
-const MONGODB_DB_NAME = 'clearfashion';
+  async function connectAndInsert() {
+    //CONNECTION
+    const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
+    const db = client.db(MONGODB_DB_NAME);
+    const products = JSON.parse(fs.readFileSync('products.json'));
+    const collection = db.collection('products');
+    
+    //INSERTION
+    //const result = await collection.insertMany(products);
+    //console.log(`${result.insertedCount} documents were inserted`);
 
-async function connectAndInsert() {
-  const client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
-  const db = client.db(MONGODB_DB_NAME);
+    //QUERIES
+      //Find all products related to a given brands (-> here Dedicated)
+      //const brand = 'Circle Sportswear';
+      //const related = await collection.find({brand}).toArray();
+      //console.log("all products related to a given brands -> Circle Sportswear : ")
+      //console.log(related);
 
-  const products = JSON.parse(fs.readFileSync('products.json'));
+      //Find all products less than a price
+      //const lesser = await collection.find({"max" : {$gte : 50}});
+      //console.log("all products less than a price -> 50 : ")
+      //console.log(lesser);
+      //Find all products sorted by price
+      //Find all products sorted by date
+      //Find all products scraped less than 2 weeks 
+      
+    //DISCONNECTION
+    client.close();
+  }
 
-  const collection = db.collection('products');
-  const result = await collection.insertMany(products);
-
-  console.log(`${result.insertedCount} documents were inserted`);
-  client.close();
-}
-
-connectAndInsert();
+  connectAndInsert();
 })();
 
