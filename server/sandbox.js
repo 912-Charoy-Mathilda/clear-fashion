@@ -31,9 +31,8 @@ const execPromise = promisify(exec);
   } catch (err) {
     console.error(`Error executing JavaScript files: ${err}`);
   }
-})();
 
-// MongoDB Collection
+  // MongoDB Collection
 const { MongoClient } = require('mongodb');
 
 const MONGODB_URI = 'mongodb+srv://mathilda:azerty@cluster0.lfnildu.mongodb.net/test/?retryWrites=true&w=majority';
@@ -53,3 +52,5 @@ async function connectAndInsert() {
 }
 
 connectAndInsert();
+})();
+
