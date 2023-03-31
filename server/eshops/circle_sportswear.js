@@ -102,6 +102,6 @@ const scrapeAllDataCS = async () => {
   }
 }
 
-writeDataToFileCS();
+//writeDataToFileCS();
 
 

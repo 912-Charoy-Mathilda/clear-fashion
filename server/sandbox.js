@@ -48,21 +48,6 @@ const execPromise = promisify(exec);
     //INSERTION
     //const result = await collection.insertMany(products);
     //console.log(`${result.insertedCount} documents were inserted`);
-
-    //QUERIES
-      //Find all products related to a given brands (-> here Dedicated)
-      //const brand = 'Circle Sportswear';
-      //const related = await collection.find({brand}).toArray();
-      //console.log("all products related to a given brands -> Circle Sportswear : ")
-      //console.log(related);
-
-      //Find all products less than a price
-      //const lesser = await collection.find({"max" : {$gte : 50}});
-      //console.log("all products less than a price -> 50 : ")
-      //console.log(lesser);
-      //Find all products sorted by price
-      //Find all products sorted by date
-      //Find all products scraped less than 2 weeks 
       
     //DISCONNECTION
     client.close();
