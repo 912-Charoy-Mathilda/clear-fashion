@@ -78,44 +78,30 @@ app.get('/products/:brand', async (request, response) => {
   }
 });
 
-
-// GET /products/search --> no
-// app.get('/products/search', async (request, response) => {
-//   try {
-//     let { limit = 12, brand, price } = request.query;
-//     limit = parseInt(limit);
-
-//     const query = {};
-
-//     if (brand) {
-//       query.brand = { $regex: brand, $options: 'i' };
-//     }
-
-//     if (price) {
-//       query.price = { $lte: parseFloat(price) };
-//     }
-
-//     const products = await db.collection('products')
-//       .find(query)
-//       .sort({ price: 1 })
-//       .limit(limit)
-//       .toArray();
-
-//     const total = await db.collection('products').countDocuments(query);
-
-//     response.json({ limit, total, results: products });
-//   } catch (error) {
-//     response.status(500).json({ error: error.message });
-//   }
-// });
-app.get('/products/search', async (request, response) => {
+// GET products/search --> no
+app.get('/products/search', async (req, res) => {
   try {
-    const products = await db.collection('products').find().toArray();
-    response.json(products);
-  } catch (error) {
-    response.status(500).json({ error: error.message });
+  var limit = parseInt(req.query.limit) || 12;
+  var brand = req.query.brand;
+  var price = req.query.price;
+  // Build the query object based on provided filters
+  var query = {};
+  if (brand) query.brand = brand;
+  if (price) query.price = { $lte: price };
+
+  // Fetch the products using the query object, limit, and sort by price
+  var products = await db.collection('products')
+    .find(query)
+    .limit(limit)
+    .sort({ price: 1 })
+    .toArray();
+
+  res.status(200).json(products);
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ message: error.message });
   }
-});
+  });
 
 
 app.listen(PORT);

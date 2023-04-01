@@ -146,10 +146,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   render(currentProducts, currentPagination);
 });
 
-//Feature 0 - Show more : As a user I want to show more products So that I can display 12, 24 or 48 products on the same page
-
-//Feature 1 - Browse pages : As a user I want to browse available pages So that I can load more products
-
 //Feature 2 - Filter by brands As a user I want to filter by brands name So that I can browse product for a specific brand
 
 //Feature 3 - Filter by recent products : As a user I want to filter by by recent products So that I can browse the new released products (less than 2 weeks)
