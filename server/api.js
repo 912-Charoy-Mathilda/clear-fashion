@@ -67,11 +67,11 @@ app.get('/products', async (request, response) => {
 
 
 
-// GET/products/:brand --> no
+// GET/products/:brand
 app.get('/products/:brand', async (request, response) => {
   try {
     const brand = request.params.brand;
-    const products = await db.collection('products').find({ brand }).toArray();
+    const products = await db.collection('products').find({brand}).toArray();
     response.json(products);
   } catch (error) {
     response.status(500).json({ error: error.message });
